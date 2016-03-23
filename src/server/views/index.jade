@@ -1,0 +1,12 @@
+doctype
+html(lang="en")
+  head
+    title Advent Calendar
+    link(rel="stylesheet", href="/static/main.css")
+  body
+    .js-app-container!=html
+    
+    script.
+      window.__INITIAL__STATE__ = !{JSON.stringify(initialState)};
+      
+    script(async, defer, src="/static/bundle.js")

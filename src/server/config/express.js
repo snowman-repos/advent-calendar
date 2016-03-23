@@ -11,7 +11,7 @@ import path                       from "path";
 import mongoose                   from "mongoose"
 import session                    from "express-session";
 
-const APP = express();
+const app = express();
 const STORE = MongoStore(session);
 
 // Setup database connection
@@ -36,7 +36,7 @@ let restrictHosts = function(req, res, next) {
 };
 
 // Setup and run app
-APP
+app
   .use(compression())
   .use(cookieParser())
   .use(methodOverride())
@@ -50,7 +50,7 @@ APP
     store: new STORE({ mongooseConnection: mongoose.connection })
   }, () => console.log(colors.green("\n\nDB connection open\n\n"))))
   .set("view engine", "jade")
-  .set("views", "./server/views")
+  .set("views", "./src/server/views")
   .use(function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
 		res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
@@ -59,4 +59,4 @@ APP
   })
   .use(restrictHosts)
 
-export default APP
+export default app

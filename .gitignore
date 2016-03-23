@@ -3,4 +3,7 @@ node_modules
 npm-debug.log
 dist
 build
-server/config/secrets.js
+public
+TODO
+*.todo
+src/server/config/secrets.js
