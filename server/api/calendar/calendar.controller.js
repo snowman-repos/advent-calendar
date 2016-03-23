@@ -13,9 +13,12 @@ let create = function(req, res) {
   newCalendar.save(function(err, calendar) {
 
     if(err) {
-      res.status(500).send(err).end();
+      return res.status(500).render("error", {
+        errorCode: 500,
+        errorMessage: err
+      });
     } else {
-      res.status(200).json(calendar);
+      return res.status(200).json(calendar);
     }
 
   });
@@ -32,9 +35,12 @@ let remove = function(req, res) {
   Calendar.findByIdAndRemove(req.params.id, function(err, user) {
 
     if(err) {
-      res.status(500).send(err).end();
+      return res.status(500).render("error", {
+        errorCode: 500,
+        errorMessage: err
+      });
     } else {
-      res.status(204).end();
+      return res.status(204).end();
     }
 
   });
@@ -53,9 +59,12 @@ let find = function(req, res) {
   }, function(err, calendars) {
 
     if(err) {
-      res.status(500).send(err).end();
+      return res.status(500).render("error", {
+        errorCode: 500,
+        errorMessage: err
+      });
     } else {
-      res.status(200).json(calendars);
+      return res.status(200).json(calendars);
     }
 
   });
@@ -71,9 +80,12 @@ let getAll = function(req, res) {
   Calendar.find({}, function(err, calendars) {
 
     if(err) {
-      res.status(500).send(err).end();
+      return res.status(500).render("error", {
+        errorCode: 500,
+        errorMessage: err
+      });
     } else {
-      res.status(200).json(calendars);
+      return res.status(200).json(calendars);
     }
 
   });
@@ -90,9 +102,12 @@ let getOne = function(req, res) {
   Calendar.findById(req.params.id , function(err, calendar) {
 
 		if(err) {
-      res.status(500).send(err).end();
+      return res.status(500).render("error", {
+        errorCode: 500,
+        errorMessage: err
+      });
     } else {
-      res.status(200).json(calendar);
+      return res.status(200).json(calendar);
     }
 
   });
@@ -118,9 +133,12 @@ let update = function(req, res) {
     calendar.save(function(err, calendar) {
 
       if(err) {
-        res.status(500).send(err).end();
+        return res.status(500).render("error", {
+          errorCode: 500,
+          errorMessage: err
+        });
       } else {
-        res.status(200).json(calendar);
+        return res.status(200).json(calendar);
       }
 
     });
