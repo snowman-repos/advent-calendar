@@ -42,6 +42,8 @@
     "karma": "^0.13.22",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.24",
     "karma-webpack": "^1.7.0",
     "merge": "^1.2.0",
     "node-jasmine-async": "^0.1.0",
@@ -76,7 +78,8 @@
     "slate": "rm -rf node_modules && npm install",
     "start": "NODE_ENV=development node src/server/index.js --progress --colors --profile",
     "start:prod": "NODE_ENV=production node src/server/index.js --progress --colors --profile",
-    "test": "NODE_ENV=test ./node_modules/jasmine-node/bin/jasmine-node --coffee src/server/spec --captureExceptions"
+    "test": "NODE_ENV=test karma start",
+    "test:api": "NODE_ENV=test ./node_modules/jasmine-node/bin/jasmine-node --coffee src/server/spec --captureExceptions"
   },
   "version": "1.0.0"
 }

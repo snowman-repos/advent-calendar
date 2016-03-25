@@ -1,15 +1,15 @@
 import { Route } from "react-router";
 import React from "react";
 
-import App from "./containers/App";
+import App from "./containers/App/App";
 
 //Redux Smart
-import CounterPage from "./containers/CounterPage";
+import CounterPage from "./containers/CounterPage/CounterPage";
 
 //Redux Dumb
-import HomePage from "./components/Home";
-import OtherPage from "./components/Other";
-import Error from "./components/Error";
+import HomePage from "./components/Home/Home";
+import OtherPage from "./components/Other/Other";
+import Error from "./components/Error/Error";
 
 export default (
   <Route name="app" path="/" component={App}>

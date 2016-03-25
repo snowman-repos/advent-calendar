@@ -3,8 +3,8 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Link } from "react-router";
 import classNames from "classnames";
-import * as LayoutActions from '../actions/layout';
-import Home from "../components/Home"
+import * as LayoutActions from '../../actions/layout';
+import Home from "../../components/Home/Home"
 
 class App extends Component {
 
@@ -31,7 +31,7 @@ class App extends Component {
     return (
 
       <div>
-        <nav className="sidebar-nav">
+        <nav className="nav">
 		      <Link to="/home" activeClassName="active">Home</Link>
 		      <Link to="/counter" activeClassName="active">Counter</Link>
 		      <Link to="/other" activeClassName="active">Other</Link>
