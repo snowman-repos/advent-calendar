@@ -1,0 +1,25 @@
+.o-media
+  row()
+  padding-bottom       0.5 * $base-spacing-unit
+  width                100%
+
+  +bp($screen-xs-min)
+    border-bottom      1px dotted $white
+
+  &__image
+    col(12)
+    text-align         center
+
+    +bp($screen-xs-min)
+      col(4)
+      padding-right    0.5 * $base-spacing-unit
+      text-align       right
+
+  &__text
+    col(12)
+    text-align         center
+
+    +bp($screen-xs-min)
+      col(8)
+      padding-left     0.5 * $base-spacing-unit
+      text-align       left

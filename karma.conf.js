@@ -73,7 +73,8 @@ module.exports = function(config) {
       devtool: "inline-source-map",
       module: {
         loaders: [
-          { test: /\.js$/, loader: "babel-loader" }
+          { test: /\.js$/, loader: "babel-loader" },
+          { test: /\.json$/, loader: "json-loader" }
         ]
       }
     },
