@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Icon                 from "../Icon/Icon";
-import pkg                  from "json!../../../../package.json";
+import pkg                  from "../../../../package.json";
 
 class SocialLinks extends Component {
 

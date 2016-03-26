@@ -24,3 +24,19 @@ Example showing how to change the color/size of the icons:
 .icon-linkedin {
 	width: 0.8571429451305903em;
 }
+
+.icon-angle-left {
+	width: 0.3750009909272194em;
+}
+
+.icon-angle-right {
+	width: 0.3392861280590296em;
+}
+
+.icon-angle-up {
+	width: 0.642861433327198em;
+}
+
+.icon-angle-down {
+	width: 0.6428574100136757em;
+}

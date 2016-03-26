@@ -83,5 +83,6 @@
     "test": "NODE_ENV=test karma start",
     "test:api": "NODE_ENV=test ./node_modules/jasmine-node/bin/jasmine-node --coffee src/server/spec --captureExceptions"
   },
+  "title": "Advent Calendar",
   "version": "1.0.0"
 }

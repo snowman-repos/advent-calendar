@@ -21,6 +21,8 @@ import { fetchComponentDataBeforeRender } from "../shared/lib/fetchComponentData
 import configureStore                     from "../shared/store/configureStore";
 import routes                             from "../shared/routes";
 
+import pkg                                from "../../package.json";
+
 app.use("/", APIroutes)
 
 // ----------
@@ -42,15 +44,23 @@ app.get('/*', function (req, res) {
     if(err) {
       console.error(err);
       return res.status(500).render("error", {
+        description: pkg.description,
         errorCode: 500,
-        errorMessage: "Internal server error"
+        errorMessage: "Internal server error",
+        keywords: pkg.keywords,
+        title: "500 Error : Internal server error - " + pkg.title,
+        url: pkg.homepage
       });
     }
 
     if(!renderProps)
       return res.status(404).render("error", {
+        description: pkg.description,
         errorCode: 404,
-        errorMessage: "Not found"
+        errorMessage: "Not found",
+        keywords: pkg.keywords,
+        title: "404 Error : Not found - " + pkg.title,
+        url: pkg.homepage
       });
 
     const store = configureStore({});
@@ -69,15 +79,25 @@ app.get('/*', function (req, res) {
         const componentHTML = ReactDOMServer.renderToString(InitialView);
         const initialState = store.getState();
         res.status(200).render("index", {
+          description: pkg.description,
           html: componentHTML,
-          initialState: initialState
+          initialState: initialState,
+          keywords: pkg.keywords,
+          title: pkg.title,
+          url: pkg.homepage
         });
 
       })
       .catch(err => {
 
         console.log(err);
-        res.end(render("index",{}));
+
+        res.end(render("index", {
+          description: pkg.description,
+          keywords: pkg.keywords,
+          title: pkg.title,
+          url: pkg.homepage
+        }));
 
       });
   });

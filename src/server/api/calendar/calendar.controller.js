@@ -1,5 +1,7 @@
 import Calendar from "./calendar.model";
 
+import pkg      from "../../../../package.json";
+
 /**
  * Create a new Calendar based on JSON data
  * posted to the API.
@@ -14,8 +16,12 @@ let create = function(req, res) {
 
     if(err) {
       return res.status(500).render("error", {
+        description: pkg.description,
         errorCode: 500,
-        errorMessage: err
+        errorMessage: err,
+        keywords: pkg.keywords,
+        title: "500 Error : " + err + " - " + pkg.title,
+        url: pkg.homepage
       });
     } else {
       return res.status(200).json(calendar);
@@ -36,8 +42,12 @@ let remove = function(req, res) {
 
     if(err) {
       return res.status(500).render("error", {
+        description: pkg.description,
         errorCode: 500,
-        errorMessage: err
+        errorMessage: err,
+        keywords: pkg.keywords,
+        title: "500 Error : " + err + " - " + pkg.title,
+        url: pkg.homepage
       });
     } else {
       return res.status(204).end();
@@ -60,8 +70,12 @@ let find = function(req, res) {
 
     if(err) {
       return res.status(500).render("error", {
+        description: pkg.description,
         errorCode: 500,
-        errorMessage: err
+        errorMessage: err,
+        keywords: pkg.keywords,
+        title: "500 Error : " + err + " - " + pkg.title,
+        url: pkg.homepage
       });
     } else {
       return res.status(200).json(calendars);
@@ -81,8 +95,12 @@ let getAll = function(req, res) {
 
     if(err) {
       return res.status(500).render("error", {
+        description: pkg.description,
         errorCode: 500,
-        errorMessage: err
+        errorMessage: err,
+        keywords: pkg.keywords,
+        title: "500 Error : " + err + " - " + pkg.title,
+        url: pkg.homepage
       });
     } else {
       return res.status(200).json(calendars);
@@ -103,8 +121,12 @@ let getOne = function(req, res) {
 
 		if(err) {
       return res.status(500).render("error", {
+        description: pkg.description,
         errorCode: 500,
-        errorMessage: err
+        errorMessage: err,
+        keywords: pkg.keywords,
+        title: "500 Error : " + err + " - " + pkg.title,
+        url: pkg.homepage
       });
     } else {
       return res.status(200).json(calendar);
@@ -134,8 +156,12 @@ let update = function(req, res) {
 
       if(err) {
         return res.status(500).render("error", {
+          description: pkg.description,
           errorCode: 500,
-          errorMessage: err
+          errorMessage: err,
+          keywords: pkg.keywords,
+          title: "500 Error : " + err + " - " + pkg.title,
+          url: pkg.homepage
         });
       } else {
         return res.status(200).json(calendar);
