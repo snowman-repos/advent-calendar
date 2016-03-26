@@ -1,7 +1,6 @@
 import React from "react";
 import TestUtils from "react/lib/ReactTestUtils";
 import Error from "./Error"
-import createBrowserHistory from "history/lib/createBrowserHistory";
 
 describe("Error", function () {
 

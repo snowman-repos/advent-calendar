@@ -8,13 +8,11 @@ describe("Counter", function () {
   let heading = {};
   let decrementButton = {};
   let incrementButton = {};
-  let incrementCounter = () => {};
-  let decrementCounter = () => {};
+  let incrementCounter = jasmine.createSpy("incrementCounter");
+  let decrementCounter = jasmine.createSpy("decrementCounter");
   let counter = 0;
 
   beforeEach(function(){
-
-    this.incrementCounter = incrementCounter;
 
     renderedComponent = TestUtils.renderIntoDocument(
     	<Counter incrementCounter={incrementCounter} decrementCounter={decrementCounter} counter={counter} />
@@ -50,10 +48,15 @@ describe("Counter", function () {
 
   it("can increment the counter", function() {
 
-    spyOn(this, "incrementCounter");
     TestUtils.Simulate.click(incrementButton);
-    // TODO: get this to work
-    // expect(this.incrementCounter).toHaveBeenCalled();
+    expect(incrementCounter).toHaveBeenCalled();
+
+  });
+
+  it("can decrement the counter", function() {
+
+    TestUtils.Simulate.click(decrementButton);
+    expect(decrementCounter).toHaveBeenCalled();
 
   });
 
