@@ -5,7 +5,7 @@ import path             from "path";
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
 if(process.env.NODE_ENV == "development") {
-	let secrets = require("./../secrets.js").default;
+	let secrets = require("./../../../shared/secrets.js").default;
 	process.env.SESSION_SECRET = secrets.SESSION_SECRET;
 }
 

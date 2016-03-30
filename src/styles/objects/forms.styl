@@ -7,13 +7,20 @@
 // <input class="o-form__input" disabled id="input" placeholder="placeholder text" type="text"></input>
 // <input class="o-form__input o-form__input--block" id="input" placeholder="placeholder text" type="text"></input>
 .o-form__input
-	background		$white
-	border			1px solid $light-grey-1
+	background	transparent
+	border none
+	border-bottom 1px solid $white
 	box-shadow		none
+	color				$white
 	display			block
 	font-size		1rem
 	margin-bottom	$base-spacing-unit
 	padding			0.5 * $base-spacing-unit
+	transition $fast-transition
+
+	&:focus
+		background rgba($white, 0.1)
+		outline 	none
 
 	&:disabled,
 	&[disabled],
@@ -28,9 +35,40 @@
 	&--block
 		width		100%
 
+	&--centred
+		margin 	0.5 * $base-spacing-unit auto
+		text-align center
+
 // @name Label
 // @description Standard label for form inputs
 // @markup
 // <label class="o-form__label" for="input">Form field:</label>
 .o-form__label
 	cursor			pointer
+
+input::-webkit-input-placeholder
+	color rgba($white, 0.3)
+
+input:-webkit-autofill
+	background-color transparent
+
+.o-form__input-group
+
+	&.is-error
+
+		.o-form__input
+			animation-duration				0.3s
+			animation-fill-mode				both
+			animation-iteration-count		2
+			animation-name					shake
+
+			&:focus
+				border 									1px dotted $white
+
+@keyframes shake
+	0%, 50%, 100%
+		transform		translateX(0)
+	25%
+		transform		translateX(-10px)
+	75%
+		transform		translateX(-10px)

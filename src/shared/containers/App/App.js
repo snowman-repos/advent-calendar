@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from "react";
+import { connect }                     from "react-redux";
 import classNames                      from "classnames";
-import Home                            from "../../components/Home/Home";
-import Header                          from "../../components/Header/Header"; 
+import Home                            from "../../containers/Home/HomeContainer";
+import Header                          from "../../components/Header/Header";
 import Footer                          from "../Footer/Footer";
+// import imgurAPI                        from "../../lib/imgurAPI";
 
 class App extends Component {
 
@@ -11,6 +13,10 @@ class App extends Component {
   }
 
   render() {
+
+    const { calendars } = this.props;
+
+    // imgurAPI.get("gallery/t/puppies").then(function(data){console.log(data.data.items.slice(0,24));});
 
     return (
 
@@ -29,4 +35,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    calendars : state.calendars.present
+  };
+}
+
+export default connect(mapStateToProps)(App);

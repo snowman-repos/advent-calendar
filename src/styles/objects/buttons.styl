@@ -10,7 +10,7 @@
 	cursor						pointer
 	display						inline-block
 	font-family				$body-font
-	font-size					0.75rem
+	font-size 				0.75em
 	font-weight				400
 	padding						0.2 * $base-spacing-unit 1.25em
 	text-align				center
@@ -27,21 +27,41 @@
 		cursor					not-allowed
 		opacity					0.5
 
-	&--ghost
-		background			none
-		border					1px solid $white
-		border-radius 	0.3rem
-		color 					$white
-		font-size 			0.75rem
-		font-weight 		600
-		opacity 				0.5
-		text-transform 	uppercase
+	&--centred
+		display					block
+		margin					0 auto 0.75rem auto
+		max-width				50%
 
-		+bp($screen-xs-min)
-			font-size 		0.6rem
+	&--faded
+		opacity 				0.5
 
 		+ActiveFocusHover()
-			background 		$white
-			color 				$grey--dark
 			opacity 			1
+
+	&--ghost
+		background			none
+		border-radius 	0.2rem
+		font-weight 		600
+		text-transform 	uppercase
+
+		+ActiveFocusHover()
 			outline 			none
+
+		&--white
+			border				0.1rem solid $white
+			color 				$white
+
+			+ActiveFocusHover()
+				background 	$white
+				color 			$red
+
+		&--red
+			border				0.1rem solid $red
+			color 				$red
+
+			+ActiveFocusHover()
+				background 	$red
+				color 			$white
+
+	&--small
+		font-size 			0.6em

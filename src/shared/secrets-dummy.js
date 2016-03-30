@@ -5,5 +5,9 @@
 // This file should not be tracked by git.
 
 export default {
-  SESSION_SECRET: "xxxxxxxx"
+  SESSION_SECRET: "xxxxxxxx",
+  IMGUR: {
+    ID: "xxxxxxxxxxxxxxx",
+    SECRET: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  }
 }

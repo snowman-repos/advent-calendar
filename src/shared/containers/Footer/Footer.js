@@ -36,7 +36,7 @@ class Footer extends Component {
             token={this.onToken}
             reconfigureOnUpdate={false}
             >
-              <button className="o-button o-button--ghost">Buy me a drink</button>
+              <button className="o-button o-button--ghost o-button--ghost--red">Buy me a drink</button>
             </StripeCheckout>
         </div>
         <div className="c-footer__share">

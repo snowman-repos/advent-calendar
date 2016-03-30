@@ -6,4 +6,4 @@ build
 public
 TODO
 *.todo
-src/server/config/secrets.js
+src/shared/secrets.js

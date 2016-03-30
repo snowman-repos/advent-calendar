@@ -1,7 +1,8 @@
 .c-footer
   row()
-  background        $grey--dark
-  color             $silver
+  background        $white
+  box-shadow        0 -5px 10px $white
+  color             $grey--dark
   font-size         0.75rem
   padding           0.5 * $base-spacing-unit $base-spacing-unit
   width             100%
@@ -12,9 +13,3 @@
   &__share
     col(6)
     text-align      right
-
-  a
-    color           $red
-
-    +ActiveFocusHover()
-      color         $white

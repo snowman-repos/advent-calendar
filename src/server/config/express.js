@@ -51,6 +51,7 @@ app
   }, () => console.log(colors.green("\n\nDB connection open\n\n"))))
   .set("view engine", "jade")
   .set("views", "./src/server/views")
+  .use("/parent", express.static(__dirname + "/static"))
   .use(function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");
 		res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
