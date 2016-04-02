@@ -17,7 +17,7 @@ import "../styles/main.styl";
 const history = createBrowserHistory();
 const initialState = window.__INITIAL_STATE__;
 const store = configureStore(initialState);
-const rootElement = document.getElementById("root");
+const rootElement = document.querySelector(".js-app-container");
 
 ReactDOM.render(
   <Provider store={store}>
@@ -25,7 +25,7 @@ ReactDOM.render(
       <Router children={routes} history={history} />
     </ReduxRouter>
   </Provider>,
-  document.querySelector(".js-app-container")
+  rootElement
 );
 
 if (process.env.NODE_ENV !== "production") {

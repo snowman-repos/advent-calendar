@@ -12,9 +12,9 @@ export default {
       .then(function(response) {
         return response.json();
       })
-      // .then(function(data){
-      //   return data
-      // });
+      .then(function(data){
+        return data
+      });
 
     }
 

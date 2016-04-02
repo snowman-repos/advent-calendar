@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 import createHistory from "history/lib/createBrowserHistory";
 import createLogger from "redux-logger";
 // import promiseMiddleware from "../lib/promiseMiddleware";
-import rootReducer from "../reducers";
+import rootReducer from "../reducers/index";
 
 const middlewareBuilder = () => {
 
