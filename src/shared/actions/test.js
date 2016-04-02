@@ -1,4 +1,5 @@
-import calendarAPI from "../lib/calendarAPI"
+import calendarAPI from "../lib/calendarAPI";
+import { pushState } from "redux-router";
 
 export function loadCalendars(email) {
 
@@ -7,6 +8,7 @@ export function loadCalendars(email) {
     // dispatch(loadingChanged(true));
     calendarAPI.get("find/" + email).then(function(result) {
       dispatch(showCalendars(result));
+      dispatch(pushState(null, "/calendars/" + email));
       // dispatch(loadingChanged(false));
     });
   }
