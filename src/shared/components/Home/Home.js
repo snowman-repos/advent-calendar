@@ -53,13 +53,19 @@ class Home extends Component {
       <section className="u-centred">
 
         <Link to="/create" className="o-button o-button--ghost o-button--ghost--white">Create a new Calendar</Link>
+
         <p>or search for your existing calendars:</p>
+
         <form action={this.loadCalendars.bind(this)} className="o-form" onSubmit={this.loadCalendars.bind(this)}>
+
           <div className="o-form__input-group">
+
             <label className="o-form__label" htmlFor="email">Your email address:</label>
             <input className="o-form__input o-form__input--centred" id="email" name="email" placeholder="you@server.com" type="email" value={this.state.email} onChange={this.handleChange.bind(this)} />
             <input className="o-button o-button--ghost o-button--ghost--white" type="submit" value="get your calendars" />
+
           </div>
+
         </form>
 
       </section>
