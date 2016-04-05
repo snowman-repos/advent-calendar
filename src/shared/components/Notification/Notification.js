@@ -6,7 +6,15 @@ class NotificationWrapper extends Component {
   constructor() {
 
     super();
-    this.isActive = this.props.message?true:false
+
+    console.log(this.props);
+
+    this.isActive = this.props.message?true:false;
+    this.message = this.props.message;
+    this.onHide = this.props.onHide
+    this.notification_type = this.props.notification_type;
+    this.color = "green";
+
     switch(this.props.notification.notification_type) {
 
       case "SUCCESS":
@@ -29,15 +37,15 @@ class NotificationWrapper extends Component {
 
     return (
       <Notification
-        isActive={isActive}
-        message={message?message:""}
+        isActive={this.isActive}
+        message={this.message?this.message:""}
         dismissAfter={5000}
-        onDismiss={ ()=>hideNotification() }
+        onDismiss={ ()=>this.onHide() }
         action="X"
-        onClick={ ()=>hideNotification() }
+        onClick={ ()=>this.onHide() }
         style={{
             bar: {
-                background: color,
+                background: this.color,
                 color: "black",
                 fontSize: "2rem",
             },

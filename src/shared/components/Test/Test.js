@@ -7,10 +7,6 @@ class Test extends Component {
     this.state = {}
   }
 
-  // componentDidMount() {
-  //   this.loadCalendars = this.props.loadCalendars;
-  // }
-
   render() {
 
     return(
@@ -29,7 +25,8 @@ class Test extends Component {
 
     e.preventDefault();
     let email = this.myTextInput.value;
-    this.props.loadCalendars(email);
+    if(email)
+      this.props.loadCalendars(email);
 
   }
 

@@ -1,0 +1,61 @@
+.c-loading
+  fixed()
+  animation                    0.2s ease-in 1 forwards fadein, 10s linear infinite snowfall
+  background-color             rgba($white, 0.5)
+  background-image             url("../images/snow1.png"), url("../images/snow2.png"), url("../images/snow3.png")
+  bottom                       0
+  box-shadow                   inset 0 0 100px rgba($white, 0.75)
+  height                       100%
+  left                         0
+  opacity                      0
+  right                        0
+  text-align                   center
+  top                          0
+  transition                   $fast-transition
+  width                        100%
+  z-index                      1
+
+  &__content
+    animation-name             bounceInDown
+    animation-duration         0.75s
+    animation-fill-mode        both
+    color                      $red
+    font-weight                600
+    padding                    2 * $base-spacing-unit
+    text-shadow                0 0 10px $white
+    text-transform             uppercase
+
+@keyframes bounceInDown
+  from, 60%, 75%, 90%, to
+    animation-timing-function  cubic-bezier(0.215, 0.610, 0.355, 1.000)
+
+  0%
+    opacity                    0
+    transform                  translate3d(0, -3000%, 0)
+
+  60%
+    opacity                    1
+    transform                  translate3d(0, 75%, 0)
+
+  75%
+    transform                  translate3d(0, 40%, 0)
+
+  90%
+    transform                  translate3d(0, 55%, 0)
+
+  to
+    transform                  translate3d(0, 50%, 0)
+
+@keyframes fadein
+  0%
+    opacity                    0
+  100%
+    opacity                    1
+
+@keyframes snowfall
+  0%
+    background-position        0px 0px, 0px 0px, 0px 0px
+  50%
+    background-position        500px 500px, 100px 200px, -100px 150px
+  100%
+    background-position        500px 1000px, 200px 400px, -100px 300px

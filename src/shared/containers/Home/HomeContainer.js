@@ -3,14 +3,11 @@ import { connect } from "react-redux";
 import * as HomeActions from "../../actions/home";
 import Home from "../../components/Home/Home";
 
-function mapStateToProps(state) {
-  return {
-    calendars: state.calendars.present
-  };
-}
+let mapStateToProps = state => ({
+  calendars: state.calendars,
+  ui: state.ui
+})
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(HomeActions, dispatch);
-}
+let mapDispatchToProps = dispatch => bindActionCreators(HomeActions, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

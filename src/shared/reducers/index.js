@@ -6,12 +6,14 @@ import { formReducer }        from "redux-form";
 // import home from "./home";
 
 import calendars from "./calendars";
-// import notifications from "./notifications";
-// import ui from "./ui";
+import notification from "./notification";
+import ui from "./ui";
 
 const rootReducer = combineReducers({
   calendars: calendars,
-  router: routerStateReducer
+  notification: notification,
+  router: routerStateReducer,
+  ui: ui
 });
 
 export default rootReducer;

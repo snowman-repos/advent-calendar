@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === "production") {
         exclude: /node_modules/,
         include: __dirname
       },
-      { test: /\.(png|jpg|gif|jpeg)$/, loader: "url-loader?limit=8192"},
+      { test: /\.(png|jpg|gif|jpeg|svg)$/, loader: "url-loader?limit=8192"},
       { test: /\.styl$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader", "stylus-loader?sourceMap") },
       { test: /\.json$/, loader: "json" }
     ]},
@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === "production") {
         exclude: /node_modules/,
         include: __dirname
       },
-      { test: /\.(png|jpg|gif|jpeg)$/, loader: "url-loader?limit=8192"},
+      { test: /\.(png|jpg|gif|jpeg|svg)$/, loader: "url-loader?limit=8192"},
       { test: /\.styl$/, loader: "style-loader!css-loader!stylus-loader" },
       { test: /\.json$/, loader: "json" }
     ]},

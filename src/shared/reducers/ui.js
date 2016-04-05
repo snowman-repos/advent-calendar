@@ -1,4 +1,4 @@
-export const ui = (state={}, action) => {
+export default function ui(state={}, action) {
 
     switch (action.type) {
 

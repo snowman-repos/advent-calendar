@@ -4,7 +4,8 @@ import * as TestActions from "../../actions/test";
 import Test from "../../components/Test/Test";
 
 let mapStateToProps = state => ({
-  calendars: state.calendars
+  calendars: state.calendars,
+  ui: state.ui
 })
 
 let mapDispatchToProps = dispatch => bindActionCreators(TestActions, dispatch)
