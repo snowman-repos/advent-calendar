@@ -2,7 +2,7 @@ import calendarAPI              from "../lib/calendarAPI";
 import { pushState }            from "redux-router";
 import * as NotificationActions from "./notification";
 import * as UIActions           from "./ui";
-import NProgress                from "nprogress";
+// import NProgress                from "nprogress";
 
 export function loadCalendars(email) {
 
@@ -11,12 +11,12 @@ export function loadCalendars(email) {
     let state = getState();
 
     dispatch(UIActions.loadingChanged(true));
-    NProgress.start();
+    // NProgress.start();
 
     calendarAPI.get("find/" + email).then(function(result) {
 
       dispatch(UIActions.loadingChanged(false));
-      NProgress.done();
+      // NProgress.done();
 
       if(result && result.length) {
 

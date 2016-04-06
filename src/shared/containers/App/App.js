@@ -2,12 +2,11 @@ import React, { Component, PropTypes } from "react";
 import { connect }                     from "react-redux";
 import classNames                      from "classnames";
 import Home                            from "../../containers/Home/HomeContainer";
-import Test                            from "../../containers/Test/Test";
 import NotificationContainer           from "../../containers/Notification/Notification";
 import Loading                         from "../../components/Loading/Loading";
 import Header                          from "../../components/Header/Header";
 import Footer                          from "../Footer/Footer";
-import { loadCalendars}                from "../../actions/test"
+import { loadCalendars}                from "../../actions/calendars"
 import { bindActionCreators }          from "redux"
 
 class App extends Component {

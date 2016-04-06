@@ -3,28 +3,78 @@ import { Link }             from "react-router";
 
 class Calendars extends Component {
 
-  // if calendars aren't loaded, or if calendars[0].email != params.email then reload calendars
+  constructor(props) {
 
-  constructor() {
+    super(props);
 
-    super();
+    this.state = {
+      calendars: this.props.calendars || [],
+      email: this.props.params.email
+    }
+
+  }
+
+  componentDidMount() {
+
+    // this.loadCalendars()
+
+    if(Object.keys(this.state.calendars).length === 0 && JSON.stringify(this.state.calendars) === JSON.stringify({})) {
+      this.loadCalendars();
+    }
+
+    if(this.state.calendars) {
+      if(this.state.calendars.calendars) {
+        this.setState({
+          calendars:  this.state.calendars.calendars,
+          email: this.props.params.email
+        });
+        this.state.calendars = this.state.calendars.calendars;
+      }
+    }
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    this.state.calendars = nextProps.calendars;
+    this.state.email = this.props.params.email;
+
+    this.setState({
+      calendars:  nextProps.calendars.calendars,
+      email: this.props.params.email
+    })
+
+  }
+
+  loadCalendars() {
+
+    this.props.loadCalendars(this.state.email);
 
   }
 
   getLinks() {
 
-    return this.props.calendars.map( calendar => {
-      <Link to={"/calendar/" + calendar.id}>{calendar.name}</Link>
-    })
+    if(Array.isArray(this.state.calendars)) {
+      return(this.state.calendars.map(function(calendar){
+        return(
+          <li className="o-list__item" key={calendar._id}>
+            <Link to={"/calendar/" + calendar._id} className="o-list__item__link">{calendar.name}</Link>
+          </li>
+        )
+      }))
+    } else {
+      return ""
+    }
 
   }
 
   render() {
+
     return (
 
-      <div>
-        <h1>Calendars for: {this.props.calendars[0].email}</h1>
-        <ul>
+      <div className="c-calendars">
+        <h2 className="c-calendars__heading">Calendars for: {this.state.email}</h2>
+        <ul className="o-list">
           {this.getLinks()}
         </ul>
       </div>

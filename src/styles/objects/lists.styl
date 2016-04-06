@@ -1,0 +1,26 @@
+.o-list
+  list-style                       none
+
+  &__item
+    overflow                       hidden
+    text-align                     left
+
+    &:first-child
+      border-top-left-radius       0.3rem
+      border-top-right-radius      0.3rem
+
+    &:last-child
+      border-bottom-left-radius    0.3rem
+      border-bottom-right-radius   0.3rem
+
+    &__link
+      background                   $red--dark
+      color                        $white
+      display                      block
+      padding                      0.5rem
+      text-decoration              none
+      transition                   $fast-transition
+
+      +ActiveFocusHover()
+        background                 lighten($red--dark, 15%)
+        color                      $white
