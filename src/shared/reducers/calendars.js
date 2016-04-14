@@ -20,14 +20,6 @@ export default function calendars(state={}, action) {
 
         break;
 
-      case "CHANGE_EMAIL":
-
-        return Object.assign({}, state, {
-          email: action.email
-        });
-
-        break;
-
       case "ADD_CALENDAR":
 
         return Object.assign({}, state, {

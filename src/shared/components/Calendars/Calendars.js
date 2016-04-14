@@ -16,8 +16,6 @@ class Calendars extends Component {
 
   componentDidMount() {
 
-    // this.loadCalendars()
-
     if(Object.keys(this.state.calendars).length === 0 && JSON.stringify(this.state.calendars) === JSON.stringify({})) {
       this.loadCalendars();
     }
@@ -25,8 +23,7 @@ class Calendars extends Component {
     if(this.state.calendars) {
       if(this.state.calendars.calendars) {
         this.setState({
-          calendars:  this.state.calendars.calendars,
-          email: this.props.params.email
+          calendars:  this.state.calendars.calendars
         });
         this.state.calendars = this.state.calendars.calendars;
       }
@@ -37,11 +34,9 @@ class Calendars extends Component {
   componentWillReceiveProps(nextProps) {
 
     this.state.calendars = nextProps.calendars;
-    this.state.email = this.props.params.email;
 
     this.setState({
-      calendars:  nextProps.calendars.calendars,
-      email: this.props.params.email
+      calendars:  nextProps.calendars.calendars
     })
 
   }

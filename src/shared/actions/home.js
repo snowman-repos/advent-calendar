@@ -20,6 +20,7 @@ export function loadCalendars(email) {
 
       if(result && result.length) {
 
+        dispatch(changeEmail(email));
         dispatch(showCalendars(result));
         dispatch(pushState(null, "/calendars/" + email));
 
@@ -32,6 +33,15 @@ export function loadCalendars(email) {
     });
 
   }
+
+}
+
+export function changeEmail(email) {
+
+  return {
+    type: "CHANGE_EMAIL",
+    email: email
+  };
 
 }
 

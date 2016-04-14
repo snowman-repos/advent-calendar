@@ -2,24 +2,23 @@ import calendarAPI              from "../lib/calendarAPI";
 import { pushState }            from "redux-router";
 import * as NotificationActions from "./notification";
 import * as UIActions           from "./ui";
-// import NProgress                from "nprogress";
+import NProgress                from "nprogress";
 
 export function loadCalendars(email) {
 
-  return(dispatch, getState) => {
-
-    let state = getState();
+  return(dispatch) => {
 
     dispatch(UIActions.loadingChanged(true));
-    // NProgress.start();
+    NProgress.start();
 
     calendarAPI.get("find/" + email).then(function(result) {
 
       dispatch(UIActions.loadingChanged(false));
-      // NProgress.done();
+      NProgress.done();
 
       if(result && result.length) {
 
+        dispatch(changeEmail(email));
         dispatch(showCalendars(result));
 
       } else {
@@ -35,11 +34,22 @@ export function loadCalendars(email) {
 
 }
 
+export function changeEmail(email) {
+
+  console.log("owenfonwefon");
+
+  return {
+    type: "CHANGE_EMAIL",
+    email: email
+  };
+
+}
+
 export function showCalendars(json) {
 
-    return {
-        type: "SHOW_CALENDARS",
-        calendars: json
-    };
+  return {
+    type: "SHOW_CALENDARS",
+    calendars: json
+  };
 
 }
