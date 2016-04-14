@@ -60,7 +60,7 @@ class Calendar extends Component {
     return (
 
       <div className="c-calendar">
-        <h1 className="u-centred">{calendar.name}</h1>
+        <h2 className="u-centred">{calendar.name}</h2>
       </div>
 
     );
