@@ -1,7 +1,16 @@
 .c-windows
   unstyled-list()
-  padding         0.5 * $base-spacing-unit
+  display           block
+  margin            0 auto
+  max-width         1024px
 
   &__item
-    display       block
-    margin-bottom 20px
+    display         block
+    padding-bottom  2vw
+    width           48%
+
+    +bp($screen-sm-min)
+      width         32%
+
+  &__gutter
+    width           2%

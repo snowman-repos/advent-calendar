@@ -3,8 +3,11 @@ import Masonry              from "react-masonry-component";
 import Window               from "../Window/Window";
 
 let masonryOptions = {
-  gutter: 20,
-  transitionDuration: 0
+  columnWidth: ".c-windows__item",
+  gutter: ".c-windows__gutter",
+  itemSelector: ".c-windows__item",
+  percentPosition: true,
+  transitionDuration: "0.4s"
 };
 
 class Calendar extends Component {
@@ -17,7 +20,8 @@ class Calendar extends Component {
       calendar: this.props.calendars.calendar || {},
       calendars: this.props.calendars.calendars || [],
       email: this.props.email,
-      id: this.props.params.id
+      id: this.props.params.id,
+      loaded: false
     }
 
   }
@@ -36,6 +40,23 @@ class Calendar extends Component {
         this.state.calendar = this.state.calendar.calendar;
       }
     }
+
+  }
+
+  componentDidMount() {
+
+    setTimeout(() => {
+
+      if(window) {
+        window.dispatchEvent(new CustomEvent("resize"));
+      }
+
+    }, 300);
+
+    setTimeout(() => {
+      this.state.loaded = true;
+      this.setState({loaded: true});
+    }, 600)
 
   }
 
@@ -61,8 +82,7 @@ class Calendar extends Component {
         return(windows.map(function(window){
 
           let style = {
-            height: window.size.height,
-            width: window.size.width
+            height: window.height + "vh"
           }
 
           return(
@@ -87,14 +107,14 @@ class Calendar extends Component {
   render() {
 
     if(!this.state.calendar) {
-      return(<div>Loading</div>);
+      return(<div className="u-centred">Loading calendar&hellip;</div>);
     }
 
     let { calendar } = this.state;
 
     return (
 
-      <div className="c-calendar">
+      <div className={ this.state.loaded ? "c-calendar is-loaded" : "c-calendar" }>
         <h2 className="u-centred">{calendar.name}</h2>
         <Masonry
           className={"c-windows"}
@@ -102,6 +122,7 @@ class Calendar extends Component {
           options={masonryOptions}
           disableImagesLoaded={false}
         >
+          <li className="c-windows__gutter"></li>
           {this.getWindows()}
         </Masonry>
         <footer>share this calendar</footer>
@@ -112,17 +133,3 @@ class Calendar extends Component {
 }
 
 export default Calendar;
-
-// import Masonry              from "react-masonry-component";
-// Masonry(React);
-// let masonryOptions = {
-//   transitionDuration: 0
-// };
-// <Masonry
-//   className={"c-windows"}
-//   elementType={"ul"}
-//   options={masonryOptions}
-//   disableImagesLoaded={false}
-// >
-//   {this.getWindows()}
-// </Masonry>

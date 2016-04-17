@@ -6,11 +6,6 @@ class Home extends Component {
   constructor(props) {
 
     super(props);
-    this.state = {}
-
-  }
-
-  componentWillMount() {
 
     this.state = {
       email: ""
@@ -40,7 +35,6 @@ class Home extends Component {
   loadCalendars(e) {
 
     e.preventDefault();
-    // let email = this.myTextInput.value;
     if(this.isntBlank() && this.isValidEmail())
       this.props.loadCalendars(this.state.email);
 
