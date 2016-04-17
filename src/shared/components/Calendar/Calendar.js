@@ -51,12 +51,12 @@ class Calendar extends Component {
         window.dispatchEvent(new CustomEvent("resize"));
       }
 
-    }, 300);
+    }, 600);
 
     setTimeout(() => {
       this.state.loaded = true;
       this.setState({loaded: true});
-    }, 600)
+    }, 1000)
 
   }
 
