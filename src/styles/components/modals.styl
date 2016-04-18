@@ -1,0 +1,68 @@
+.c-modal
+  absolute()
+  bottom           auto
+  height           100%
+  left             0
+  opacity          0
+  overflow         auto
+  right            auto
+  text-align       center
+  top              0
+  width            100%
+
+  +ActiveFocusHover()
+    outline        none
+
+  &.ReactModal__Content--after-open
+    opacity        1
+
+    .c-modal__content
+      height       auto !important
+      left         50% !important
+      opacity      1
+      top          50% !important
+      transform    translateX(-50%) translateY(-50%)
+      width        auto !important
+
+    .c-modal__close-button
+      opacity      0.5
+      transition   0.2s 0.9s ease-in-out
+
+      +ActiveFocusHover()
+        opacity    1
+        outline    none
+        transition $fast-transition
+
+  &__content
+    absolute()
+    opacity        0
+    transform      translateX(0) translateY(0)
+    transition     0.3s 0.3s transform ease-in-out, 0.3s 0.3s left ease-in-out, 0.3s 0.3s top ease-in-out, 0.3s 0.35s opacity ease-in
+
+  &__close-button
+    absolute()
+    color          $white
+    font-size      2rem
+    height         2rem
+    opacity        0
+    right          0
+    text-align     center
+    top            0
+    width          2rem
+
+  &__overlay
+    fixed()
+    background     rgba($black, 0.75)
+    bottom         0
+    height         100%
+    left           0
+    opacity        0
+    perspective    600px
+    right          0
+    top            0
+    transition     $fast-transition
+    width          100%
+    z-index        3
+
+    &.ReactModal__Overlay--after-open
+      opacity      1

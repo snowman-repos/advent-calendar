@@ -1,7 +1,8 @@
-var path = require("path");
-var webpack = require("webpack");
-var merge = require("merge");
+var autoprefixer = require("autoprefixer");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require("path");
+var merge = require("merge");
+var webpack = require("webpack");
 
 var webpackConfig = {
   output: {
@@ -30,9 +31,12 @@ if (process.env.NODE_ENV === "production") {
         include: __dirname
       },
       { test: /\.(png|jpg|gif|jpeg|svg)$/, loader: "url-loader?limit=8192"},
-      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader", "stylus-loader?sourceMap") },
+      { test: /\.styl$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader", "postcss-loader", "stylus-loader?sourceMap") },
       { test: /\.json$/, loader: "json" }
     ]},
+    postcss: function() {
+      return [autoprefixer];
+    },
     plugins : [
       new webpack.DefinePlugin({
         "process.env": {
@@ -56,9 +60,12 @@ if (process.env.NODE_ENV === "production") {
         include: __dirname
       },
       { test: /\.(png|jpg|gif|jpeg|svg)$/, loader: "url-loader?limit=8192"},
-      { test: /\.styl$/, loader: "style-loader!css-loader!stylus-loader" },
+      { test: /\.styl$/, loader: "style-loader!css-loader!postcss-loader!stylus-loader" },
       { test: /\.json$/, loader: "json" }
     ]},
+    postcss: function() {
+      return [autoprefixer];
+    },
     entry : [
       "webpack-hot-middleware/client",
       "./src/client/index.js"
