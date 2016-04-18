@@ -103,6 +103,28 @@ class Window extends Component {
 
   }
 
+  modalOpened() {
+
+    this.refs.modal.node.firstChild.firstChild.addEventListener("click", () => {
+      this.closeModal();
+    });
+
+    if(document && window) {
+
+      document.onkeydown = (e) => {
+
+        e = e || window.event;
+
+        if (e.keyCode == 27) {
+          this.closeModal();
+        }
+
+      };
+
+    }
+
+  }
+
   render() {
 
     let style = this.state.opened ? { backgroundImage: "url(" + this.props.content.url + ")" } : {}
@@ -116,8 +138,11 @@ class Window extends Component {
             <Modal
               className="c-modal"
               isOpen={this.state.modalIsOpen}
+              onAfterOpen={this.modalOpened.bind(this)}
+              onClick={this.closeModal.bind(this)}
               onRequestClose={this.closeModal.bind(this)}
-              overlayClassName="c-modal__overlay" >
+              overlayClassName="c-modal__overlay"
+              ref="modal" >
               <button className="o-button--plain c-modal__close-button" onClick={this.closeModal.bind(this)}>&times;</button>
               <div className="c-modal__content" style={this.getModalContentStyle()}>
                 <img className="c-modal__content" src={this.props.content.url} />
