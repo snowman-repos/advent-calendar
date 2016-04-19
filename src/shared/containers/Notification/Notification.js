@@ -5,31 +5,41 @@ import { hideNotification } from "../../actions/notification";
 import { Notification } from "react-notification";
 
 const colors = {
+  danger: "#c0392b",
+  info: "#ffffff",
   primary: "#e74c3c",
-  success: "#27ae60",
-  info: "#2980b9",
+  red: "#e74c3c",
+  success: "#ffffff",
   warning: "#f39c12",
-  danger: "#c0392b"
+  white: "#ffffff"
 }
 
 const NotificationContainer = (props) => {
 
-    let { message, notification_type } = props.notification;
-    let { onHide } = props;
-    let isActive = message?true:false;
-    let color;
+  let { message, notification_type } = props.notification;
+  let { onHide } = props;
+  let isActive = message?true:false;
+  let backgroundColor;
+  let foregroundColor;
 
-    switch(notification_type) {
-        case "SUCCESS":
-            color = colors.success
-            break;
-        case "ERROR":
-            color = colors.danger
-            break;
-        case "INFO":
-            color = colors.info
-            break;
-    }
+  switch(notification_type) {
+
+    case "SUCCESS":
+      backgroundColor = colors.success
+      foregroundColor = colors.red
+      break;
+
+    case "ERROR":
+      backgroundColor = colors.danger
+      foregroundColor = colors.white
+      break;
+
+    case "INFO":
+      backgroundColor = colors.info
+      foregroundColor = colors.red
+      break;
+
+  }
 
     return <Notification
         isActive = {isActive}
@@ -39,23 +49,24 @@ const NotificationContainer = (props) => {
         action = "&times;"
         onClick = { ()=>onHide() }
         barStyle = {{
-          background: color,
+          background: backgroundColor,
           borderRadius: 0,
           bottom: 0,
           boxShadow: "none",
+          color: foregroundColor,
           fontSize: "0.75rem",
           left: 0,
           opacity: 0,
           padding: "0.75rem",
           textAlign: "center",
           width: "100%",
-          zIndex: 1
+          zIndex: 4
         }}
         activeBarStyle = {{
           opacity: 1
         }}
         actionStyle = {{
-          color: "white",
+          color: foregroundColor,
           opacity: "0.75"
         }}
     />

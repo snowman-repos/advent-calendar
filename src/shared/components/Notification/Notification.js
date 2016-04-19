@@ -41,13 +41,13 @@ class NotificationWrapper extends Component {
         message={this.message?this.message:""}
         dismissAfter={5000}
         onDismiss={ ()=>this.onHide() }
-        action="X"
+        action="&times;"
         onClick={ ()=>this.onHide() }
         style={{
             bar: {
                 background: this.color,
                 color: "black",
-                fontSize: "2rem",
+                fontSize: "2rem"
             },
             active: {
                 left: "3rem",

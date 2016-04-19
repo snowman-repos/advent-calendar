@@ -14,6 +14,14 @@ export function showErrorNotification(message) {
   }
 }
 
+export function showInfoNotification(message) {
+  return {
+    type: "SHOW_NOTIFICATION",
+    notification_type: "INFO",
+    message
+  }
+}
+
 export function hideNotification() {
   return {
     type: "CLEAR_NOTIFICATION"

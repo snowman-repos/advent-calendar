@@ -79,7 +79,7 @@ class Calendar extends Component {
           return parseFloat(a.order) - parseFloat(b.order);
         });
 
-        return(windows.map(function(window){
+        return(windows.map((window) => {
 
           let style = {
             height: window.height + "vh"
@@ -87,7 +87,7 @@ class Calendar extends Component {
 
           return(
             <li className="c-windows__item" key={window.day} style={style}>
-              <Window {...window} />
+              <Window {...window} year={this.state.calendar.year} showNotification={this.props.showNotification} />
             </li>
           )
         }))

@@ -40,6 +40,16 @@ export function loadCalendar(id) {
 
 }
 
+export function showNotification(notification) {
+
+  return(dispatch, getState) => {
+
+    dispatch(NotificationActions.showInfoNotification(notification));
+
+  }
+
+}
+
 export function showCalendar(json) {
 
   return {

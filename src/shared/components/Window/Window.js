@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Modal                from "react-modal";
-import NProgress            from "nprogress";
+import React, { Component }     from "react";
+import Modal                    from "react-modal";
+import NProgress                from "nprogress";
 
 const modalStyle = {
   content : {
@@ -24,13 +24,32 @@ class Window extends Component {
       modalIsOpen: false
     }
 
-    this.date = new Date().getDate()
-
   }
 
   canOpen() {
 
-    return this.props.day <= this.date
+    let today = new Date();
+    let windowDate = new Date(this.props.year, 11, this.props.day);
+    // TODO: uncomment this line and delete the next
+    // let canOpen = today >= windowDate;
+    let canOpen = this.props.day <= today.getDate();
+
+    if(!canOpen) {
+
+      let options = {
+        weekday: "long",
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      };
+
+      this.props.showNotification(`You'll have to wait until ${windowDate.toLocaleDateString("en-gb", options)} before you can open this window!`)
+
+    }
+
+    return canOpen
+
+    // return this.props.day <= today.getDate()
 
   }
 
